@@ -5,13 +5,20 @@
 
 #include <iostream>
 #include <vector>
-#include <cstdlib>
+#include <random>
 
-bool isBatterParamterValid(float variable, float min, float max);
+bool isBatteryParameterWithinLimits(float f_variable, float f_min, float f_max);
 
-std::vector<float> generateRandomReading(float min, float max);
+std::vector<float> generateRandomReading(float f_min, float f_max);
 
-bool isReadinginRange(float min, float max, std::vector<float>  battery_parameters);
+bool isReadinginRange(float f_min, float f_max, std::vector<float> f_battery_parameters);
+
+std::string createString(std::string f_output_string, float f_value);
+
+std::string generateOutput(std::vector<float> f_battery_parameter_readings);
+
+std::string batteryParameterReadings(float f_min, float f_max);
+
 
 // class CBatteyCharging
 // {
