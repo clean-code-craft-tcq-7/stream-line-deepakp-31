@@ -40,7 +40,7 @@ TEST_CASE("Test case for generating random readings")
   REQUIRE(isReadinginRange(min, max, battery_parameters) == true);
 }
 
-// TEST_CASE("Test case for Print Output")
-// {
-//   printOutput(10.0, 11.2);
-// }
+TEST_CASE("Test case for Print Output")
+{
+  REQUIRE(printOutput(10.0, 11.2) == "10.0, 11.2");
+}
