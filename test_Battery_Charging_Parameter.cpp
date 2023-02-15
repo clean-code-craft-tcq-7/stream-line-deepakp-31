@@ -56,7 +56,9 @@ TEST_CASE("Test case for generateing final Output")
       "3.000000, 7.000000, 8.000000, 23.000000, 56.000000, 3.000000, 3.000000, 20.000000, 80.099998, 80.000000, "
       "19.900000, 0.000000, 45.099998, 45.000000, -1.100000";
 
-      REQUIRE(generateOutput(battery_parameter_readings) == generatedString);
+  REQUIRE(generateOutput(battery_parameter_readings) == generatedString);
 }
 
-
+TEST_CASE("Test case Readings for battery parameter ")
+{
+}
