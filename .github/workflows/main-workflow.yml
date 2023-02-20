@@ -21,7 +21,10 @@ jobs:
     - name: build test sender battery parameters
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage test_Battery_Charging_Parameter.cpp Battery_Charging_Parameter.cpp -o testchecker
       
-    - name: run
+    - name: run sender
+      run: ./sender
+
+    - name: run testchecker
       run: ./testchecker
 
     - name: collect coverage
