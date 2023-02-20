@@ -19,7 +19,7 @@ jobs:
       run: g++ -Wall -Wextra -fprofile-arcs Battery_Charging_Parameter_Main.cpp Battery_Charging_Parameter.cpp -o sender 
 
     - name: build test sender battery parameters
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage test_Battery_Charging_Parameter.cpp -o testchecker
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage test_Battery_Charging_Parameter.cpp Battery_Charging_Parameter.cpp -o testchecker
       
     - name: run
       run: ./testchecker
