@@ -25,7 +25,7 @@ jobs:
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o receiver Receiver/*.c
       
     - name: run sender
-      run: ./sender | ./receiver -t
+      run: ./sender
 
     - name: run testchecker
       run: ./testchecker
