@@ -20,10 +20,10 @@ void Receiver(char *rxBuffer,char* sensor1Buff,char* sensor2Buff)
 			rxBuffer++;
 		}
 	}
-	if(*SeparateBuff != '\0')
+	if(SeparateBuff[0][0] != '\0')
 	{
-		strcpy(sensor1Buff,&SeparateBuff[ARRAY_INDEX0]);
-		strcpy(sensor2Buff,&SeparateBuff[ARRAY_INDEX1]);
+		strcpy(sensor1Buff,&SeparateBuff[ARRAY_INDEX0][0]);
+		strcpy(sensor2Buff,&SeparateBuff[ARRAY_INDEX1][0]);
 	}
 }
 

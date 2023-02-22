@@ -30,7 +30,7 @@ void testCaseGetRxFloatVal()
 
 //get Sensor name and 4 sensor value get
 	char sensorRead3[1000]={"SOC: 70.411263, 43.662975, 66.985954, 67.906403"};
-	getSensorRxValues(sensorRead2,&sensorReadingArr[0]);
+	getSensorRxValues(sensorRead3,&sensorReadingArr[0]);
 	assert(sensorReadingArr[0].number == 1);
     assert(sensorReadingArr[0].readingCnt == 4);
     assert(sensorReadingArr[0].value[0] == 70.411263);

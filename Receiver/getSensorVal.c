@@ -12,7 +12,6 @@ void getSensorRxValues(char* rxSensorBuf,st_Sensor* sensorReadingArr)
     int nameCnt=0;
     int readStrFloatCnt = 0;
     int readFloatCnt = 0;
-    float sensorOut=0.0;
     if(*rxSensorBuf != '\0')
     {
         while((*rxSensorBuf != '\0') && (*rxSensorBuf != ':'))
@@ -45,7 +44,7 @@ int checkSensorID(char* readName)
     int retVal = -1;
     for(int loopcnt=0;loopcnt<2;loopcnt++)
     {
-        if(strcmp(&sensorNames[loopcnt],readName) == 0)
+        if(strcmp(&sensorNames[loopcnt][0],readName) == 0)
         {
             retVal = loopcnt;
         }
