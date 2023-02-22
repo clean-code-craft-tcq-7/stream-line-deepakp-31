@@ -22,8 +22,8 @@ void printMinMax_SMA()
     
     getMinMaxVal(&sensorReadingArr[ARRAY_INDEX0]);
     getMinMaxVal(&sensorReadingArr[ARRAY_INDEX1]);
-    simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX0].value[0],sensorReadingArr[ARRAY_INDEX0].readingCnt-5,sensorReadingArr[ARRAY_INDEX0].readingCnt,&smaSensorOut[ARRAY_INDEX0]);
-    simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX1].value[0],sensorReadingArr[ARRAY_INDEX1].readingCnt-5,sensorReadingArr[ARRAY_INDEX1].readingCnt,&smaSensorOut[ARRAY_INDEX1]);
+    simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX0].value[0],sensorReadingArr[ARRAY_INDEX0].readingCnt-5,sensorReadingArr[ARRAY_INDEX0].readingCnt,&smaSensorOut[ARRAY_INDEX0][0]);
+    simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX1].value[0],sensorReadingArr[ARRAY_INDEX1].readingCnt-5,sensorReadingArr[ARRAY_INDEX1].readingCnt,&smaSensorOut[ARRAY_INDEX1][0]);
     printf("Sensor%d Min : %f, Max : %f\n",sensorReadingArr[ARRAY_INDEX0].number,sensorReadingArr[ARRAY_INDEX0].minVal,sensorReadingArr[ARRAY_INDEX0].maxVal);
     printf("Sensor%d Min : %f, Max : %f\n",sensorReadingArr[ARRAY_INDEX1].number,sensorReadingArr[ARRAY_INDEX1].minVal,sensorReadingArr[ARRAY_INDEX1].maxVal);
     printf("Sensor1 Last 5 SMA value: %f, %f, %f, %f, %f",smaSensorOut[ARRAY_INDEX0][0],smaSensorOut[ARRAY_INDEX0][1],smaSensorOut[ARRAY_INDEX0][2],smaSensorOut[ARRAY_INDEX0][3],smaSensorOut[ARRAY_INDEX0][4]);
