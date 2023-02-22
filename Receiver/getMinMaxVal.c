@@ -4,8 +4,8 @@
 
 void getMinMaxVal(st_Sensor* sensorArr)
 {
-    sensorArr->minVal = sensorArr->value[ARRAY_INDEX0];
-    sensorArr->maxVal = sensorArr->value[ARRAY_INDEX0];
+    sensorArr->minVal = sensorArr->value[VALARRAY_INDEX0];
+    sensorArr->maxVal = sensorArr->value[VALARRAY_INDEX0];
     for(int loopCnt = 1; loopCnt<sensorArr->readingCnt; loopCnt++)
     {
         if(sensorArr->minVal > sensorArr->value[loopCnt])
