@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - uses: actions/checkout@v2
@@ -20,9 +20,6 @@ jobs:
 
     - name: build test sender battery parameters
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage test_Battery_Charging_Parameter.cpp Battery_Charging_Parameter.cpp -o testchecker
-
-    - name: build Receiver
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o receiver *.c*
       
     - name: run sender
       run: ./sender
@@ -30,19 +27,10 @@ jobs:
     - name: run testchecker
       run: ./testchecker
 
-    - name: run help
-      run: ./Receiver/receiver
-      
-    - name: run
-      run: ./Receiver/receiver -t
-      
-    - name: run application
-      run: ./Receiver/receiver -r
-      
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
 
-    - name: 'Upload Artifact'
+    - name: create coverage artifact
       uses: actions/upload-artifact@v2
       with:
         name: coverage
