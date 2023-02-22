@@ -1,0 +1,1 @@
+void simpleMovingAvg(float* sensorVal,int startIndex,int sensorReadingCnt,float* smgSensorOut);
