@@ -1,1 +1,1 @@
-void printMinMax_SMA();
+void printMinMax_SMA(void (*receiver)(char* rxBuffer));
