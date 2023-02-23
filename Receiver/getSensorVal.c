@@ -15,7 +15,6 @@ void getSensorRxValues(char* rxSensorBuf,st_Sensor* sensorReadingArr)
     if(*rxSensorBuf != '\0')
     {
         getSensorName(rxSensorBuf,name,&nameCnt);
-        sensorReadingArr->number = checkSensorID(name);
         rxSensorBuf+=(2+nameCnt);
         while((*rxSensorBuf != '\0') && (sensorReadingArr->number != -1))
         {
@@ -33,6 +32,7 @@ void getSensorRxValues(char* rxSensorBuf,st_Sensor* sensorReadingArr)
         }
         sensorReadingArr->value[readFloatCnt++] = atof(readStrFloatVal);
         sensorReadingArr->readingCnt = readFloatCnt;
+        sensorReadingArr->number = checkSensorID(name);
     }
 }
 
