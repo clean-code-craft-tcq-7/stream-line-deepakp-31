@@ -24,11 +24,8 @@ jobs:
     - name: build receiver
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o receiver Receiver/*.c
       
-    - name: run sender
-      run: ./sender
-      
-    - name: run receiver application
-      run: ./receiver -r
+    - name: run sender receiver application
+      run: ./sender | ./receiver -r
 
     - name: run testchecker
       run: ./testchecker
