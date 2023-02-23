@@ -7,7 +7,7 @@
 #include "getMinMaxVal.h"
 #include "getMovingAvg.h"
 
-void printMinMax_SMA(char* rxBuffer)
+void printMinMax_SMA(void (*receiver)(char*))
 {
     char sensor1Read[MAX_SENSOR][MAX_RECEIVE_BYTE];
     st_Sensor sensorReadingArr[MAX_SENSOR];
