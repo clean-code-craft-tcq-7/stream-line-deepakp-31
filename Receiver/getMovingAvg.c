@@ -10,7 +10,8 @@ void simpleMovingAvg(float* sensorVal,int startIndex,int sensorReadingCnt,float*
 		smgSensorOut[smgLoopCnt] = 0.0;
 		for(int smgCnt =0;(smgCnt <5)&&(smgCnt <= loopCnt);smgCnt++)
 		{
-			smgSensorOut[smgLoopCnt++] += sensorVal[loopCnt-smgCnt]/5;
+			smgSensorOut[smgLoopCnt] += sensorVal[loopCnt-smgCnt]/5;
 		}
+		smgLoopCnt++;
 	}
 }

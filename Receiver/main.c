@@ -10,16 +10,13 @@
 
 void printMinMax_SMA()
 {
-    
-    char sensor1Read[MAX_RECEIVE_BYTE];
-    char sensor2Read[MAX_RECEIVE_BYTE];
+    char sensor1Read[MAX_SENSOR][MAX_RECEIVE_BYTE];
     st_Sensor sensorReadingArr[MAX_SENSOR];
     float smaSensorOut[MAX_SENSOR][MAX_GET_SENSOR_VALUE];
 
-    getReceivedSensorVal(sensor1Read,sensor2Read);
-    getSensorRxValues(sensor1Read,&sensorReadingArr[ARRAY_INDEX0]);
-    getSensorRxValues(sensor1Read,&sensorReadingArr[ARRAY_INDEX1]);
-    
+    getReceivedSensorVal(sensor1Read);
+    getSensorRxValues(sensor1Read[0],&sensorReadingArr[ARRAY_INDEX0]);
+    getSensorRxValues(sensor1Read[1],&sensorReadingArr[ARRAY_INDEX1]);
     getMinMaxVal(&sensorReadingArr[ARRAY_INDEX0]);
     getMinMaxVal(&sensorReadingArr[ARRAY_INDEX1]);
     simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX0].value[0],sensorReadingArr[ARRAY_INDEX0].readingCnt-5,sensorReadingArr[ARRAY_INDEX0].readingCnt,&smaSensorOut[ARRAY_INDEX0][0]);
@@ -28,7 +25,6 @@ void printMinMax_SMA()
     printf("Sensor%d Min : %f, Max : %f\n",sensorReadingArr[ARRAY_INDEX1].number,sensorReadingArr[ARRAY_INDEX1].minVal,sensorReadingArr[ARRAY_INDEX1].maxVal);
     printf("Sensor1 Last 5 SMA value: %f, %f, %f, %f, %f",smaSensorOut[ARRAY_INDEX0][0],smaSensorOut[ARRAY_INDEX0][1],smaSensorOut[ARRAY_INDEX0][2],smaSensorOut[ARRAY_INDEX0][3],smaSensorOut[ARRAY_INDEX0][4]);
     printf("Sensor1 Last 5 SMA value: %f, %f, %f, %f, %f",smaSensorOut[ARRAY_INDEX1][0],smaSensorOut[ARRAY_INDEX1][1],smaSensorOut[ARRAY_INDEX1][2],smaSensorOut[ARRAY_INDEX1][3],smaSensorOut[ARRAY_INDEX1][4]);
-    
 }
 
 int main(int argc, char *argv[])
@@ -38,7 +34,6 @@ int main(int argc, char *argv[])
         printf("Usage: %s [-t]/[-r]\n[-t]: To run the unit test cases\n[-r]: To send the receiver data via console output\n", argv[0]);
         exit(0);
     }
-
     if(strcmp(argv[1],"-t") == 0)
     {
         runTestcases();

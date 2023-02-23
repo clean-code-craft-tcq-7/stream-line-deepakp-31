@@ -2,34 +2,36 @@
 #include <string.h>
 #include "receiver.h"
 
-void Receiver(char *rxBuffer,char* sensor1Buff,char* sensor2Buff)
+void Receiver(char *rxBuffer,char sensor1Buff[][MAX_RECEIVE_BYTE])
 {
- 	char SeparateBuff[MAX_SENSOR_OUT_READ][MAX_RECEIVE_BYTE] = {};
+ 	char SeparateBuff[MAX_SENSOR_OUT_READ][MAX_RECEIVE_BYTE] = {"\0"};
 	int separateCnt = 0;
 	int rxCnt = 0;
+	sensor1Buff[0][0] = '\0';
+	sensor1Buff[1][0] = '\0';
 	while(*rxBuffer != '\0')
 	{
-		SeparateBuff[separateCnt][rxCnt++] = *rxBuffer;
+		sensor1Buff[separateCnt][rxCnt++] = *rxBuffer;
 	    rxBuffer++;
 		if(*rxBuffer == '\n')
 		{
-			if(strcmp(&SeparateBuff[separateCnt][ARRAY_INDEX0],"Battery_Charging_Parameter")!= 0)
+			if(strcmp(&sensor1Buff[separateCnt][ARRAY_INDEX0],"Battery_Charging_Parameter")!= 0)
 			{
 				separateCnt++;
 			}
+			else
+			{
+				memset(&sensor1Buff[separateCnt],0,rxCnt);
+			}
+			rxCnt = 0;
 			rxBuffer++;
 		}
 	}
-	if(SeparateBuff[0][0] != '\0')
-	{
-		strcpy(sensor1Buff,&SeparateBuff[ARRAY_INDEX0][0]);
-		strcpy(sensor2Buff,&SeparateBuff[ARRAY_INDEX1][0]);
-	}
 }
 
-void getReceivedSensorVal(char* sensor1Buff,char* sensor2Buff)
+void getReceivedSensorVal(char sensor1Buff[][MAX_RECEIVE_BYTE])
 {
     char rxBuffer[MAX_RECEIVE_BYTE];
     fgets(rxBuffer,MAX_RECEIVE_BYTE,stdout);
-    Receiver(rxBuffer,sensor1Buff,sensor2Buff);
+    Receiver(rxBuffer,sensor1Buff);
 }
