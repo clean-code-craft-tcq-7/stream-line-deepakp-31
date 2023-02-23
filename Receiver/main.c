@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     if(strcmp(argv[1],"-t") == 0)
     {
         printMinMax_SMA(&testreadFromText);
+        runTestcases();
     }
     else if(strcmp(argv[1],"-r") == 0)
     {
