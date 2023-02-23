@@ -4,7 +4,6 @@
 
 void Receiver(char *rxBuffer,char sensor1Buff[][MAX_RECEIVE_BYTE])
 {
- 	char SeparateBuff[MAX_SENSOR_OUT_READ][MAX_RECEIVE_BYTE] = {"\0"};
 	int separateCnt = 0;
 	int rxCnt = 0;
 	sensor1Buff[0][0] = '\0';
