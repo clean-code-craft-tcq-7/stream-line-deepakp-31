@@ -11,11 +11,12 @@ void getSensorRxValues(char* rxSensorBuf,st_Sensor* sensorReadingArr)
     char readStrFloatVal[MAX_GET_SENSOR_VALUE]={};
     int readStrFloatCnt = 0;
     int readFloatCnt = 0;
+    int nameCnt=0;
     if(*rxSensorBuf != '\0')
     {
-        getSensorName(rxSensorBuf,name);
+        getSensorName(rxSensorBuf,name,&nameCnt);
         sensorReadingArr->number = checkSensorID(name);
-        rxSensorBuf+=2;
+        rxSensorBuf+=(2+nameCnt);
         while((*rxSensorBuf != '\0') && (sensorReadingArr->number != -1))
         {
             if(*rxSensorBuf != ',')
@@ -35,9 +36,8 @@ void getSensorRxValues(char* rxSensorBuf,st_Sensor* sensorReadingArr)
     }
 }
 
-void getSensorName(char* rxBuff,char* name)
+void getSensorName(char* rxBuff,char* name,int* nameCnt)
 {
-    int nameCnt=0;
     while((*rxBuff != '\0') && (*rxBuff != ':'))
     {
         name[nameCnt++] = *rxBuff++;
