@@ -13,3 +13,4 @@ typedef struct
 
 void getSensorRxValues(char* rxSensorBuf,st_Sensor* sensorReadingArr);
 int checkSensorID(char* readName);
+void getSensorName(char* rxBuff,char* name);
