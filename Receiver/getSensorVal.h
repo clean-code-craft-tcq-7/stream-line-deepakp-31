@@ -1,5 +1,6 @@
 #define MAX_SENSOR_NAME_BYTE        100
 #define MAX_SENSOR                  2
+#define HEADER_STRCNT               1
 #define MAX_GET_SENSOR_VALUE        100
 
 typedef struct 

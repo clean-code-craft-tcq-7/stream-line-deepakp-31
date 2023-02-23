@@ -10,19 +10,19 @@
 void printMinMax_SMA(void (*receiver)(char*))
 {
     static int rxCnt =0;
-    char rxBuffer[MAX_SENSOR][MAX_RECEIVE_BYTE];
+    char rxBuffer[MAX_SENSOR+(2*HEADER_STRCNT)][MAX_RECEIVE_BYTE];
     char sensor1Read[MAX_SENSOR][MAX_RECEIVE_BYTE];
     st_Sensor sensorReadingArr[MAX_SENSOR];
     float smaSensorOut[MAX_SENSOR][MAX_GET_SENSOR_VALUE];
 
-    for(int i=0;i<MAX_SENSOR+2;i++)
+    for(int i=0;i<(MAX_SENSOR+(2*HEADER_STRCNT))+2;i++)
     {
         receiver(rxBuffer[i]);
         printf("%s\n",rxBuffer[i]);
     }
-    Receiver(rxBuffer[0],sensor1Read);
-    getSensorRxValues(sensor1Read[0],&sensorReadingArr[ARRAY_INDEX0]);
-    getSensorRxValues(sensor1Read[1],&sensorReadingArr[ARRAY_INDEX1]);
+    //Receiver(rxBuffer[0],sensor1Read);
+    getSensorRxValues(rxBuffer[1],&sensorReadingArr[ARRAY_INDEX0]);
+    getSensorRxValues(rxBuffer[3],&sensorReadingArr[ARRAY_INDEX1]);
     getMinMaxVal(&sensorReadingArr[ARRAY_INDEX0]);
     getMinMaxVal(&sensorReadingArr[ARRAY_INDEX1]);
     simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX0].value[0],sensorReadingArr[ARRAY_INDEX0].readingCnt-5,sensorReadingArr[ARRAY_INDEX0].readingCnt,&smaSensorOut[ARRAY_INDEX0][0]);
