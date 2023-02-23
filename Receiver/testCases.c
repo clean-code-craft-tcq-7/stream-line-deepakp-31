@@ -27,6 +27,7 @@ void testreadFromText(char* rxBuffer)
     };
     static int loopCnt=0;
 
+    strncpy(rxBuffer,buff[loopCnt],strlen(buff[loopCnt]));
     if(++loopCnt>3)
     {
         loopCnt = 0;

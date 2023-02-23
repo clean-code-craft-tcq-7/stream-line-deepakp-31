@@ -38,7 +38,7 @@ void getSensorRxValues(char* rxSensorBuf,st_Sensor* sensorReadingArr)
 
 void getSensorName(char* rxBuff,char* name,int* nameCnt)
 {
-    while((*rxBuff != '\0') && (*rxBuff != ':'))
+    while(*rxBuff != ':')
     {
         name[*nameCnt] = *rxBuff++;
         *nameCnt += 1;
