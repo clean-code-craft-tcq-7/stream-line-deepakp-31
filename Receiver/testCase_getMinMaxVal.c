@@ -21,9 +21,9 @@ void testCasesGetMinMaxVal()
 
 //Get 4 sensor value
 	sensorReadingArr.readingCnt = 4;
-	sensorReadingArr.value[0] = 70.411263;
+	sensorReadingArr.value[0] = 66.985954;
 	sensorReadingArr.value[1] = 43.662975;
-	sensorReadingArr.value[2] = 66.985954;
+	sensorReadingArr.value[2] = 70.411263;
 	sensorReadingArr.value[3] = 67.906403;
 	getMinMaxVal(&sensorReadingArr);
 	assert(fabs(sensorReadingArr.minVal - 43.662975) < 0.0001);
