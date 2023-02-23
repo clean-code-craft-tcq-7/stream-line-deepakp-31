@@ -3,4 +3,4 @@ void testCaseGetRxFloatVal();
 void testCaseRx();
 void runTestcases();
 void testCaseMovingAvg();
-void testprintMinMax_SMA(char* rxBuffer)
+void testreadFromText(char* rxBuffer);
