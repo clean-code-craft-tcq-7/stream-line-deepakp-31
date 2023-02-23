@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "receiver.h"
 #include "printMinMaxSMA.h"
 #include "testCases.h"
 
@@ -14,11 +15,11 @@ int main(int argc, char *argv[])
     }
     if(strcmp(argv[1],"-t") == 0)
     {
-        (*funPtr[1])();
+        printMinMax_SMA(&testreadFromText);
     }
     else if(strcmp(argv[1],"-r") == 0)
     {
-        (*funPtr[0])();
+        printMinMax_SMA(&readfromConsole);
     }
     return 0;
 }

@@ -28,9 +28,7 @@ void Receiver(char *rxBuffer,char sensor1Buff[][MAX_RECEIVE_BYTE])
 	}
 }
 
-void getReceivedSensorVal(char sensor1Buff[][MAX_RECEIVE_BYTE])
-{
-    char rxBuffer[MAX_RECEIVE_BYTE];
+void readfromConsole(char* rxBuffer)
+{    
     fgets(rxBuffer,MAX_RECEIVE_BYTE,stdin);
-    Receiver(rxBuffer,sensor1Buff);
 }
