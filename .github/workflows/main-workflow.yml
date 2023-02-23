@@ -30,11 +30,14 @@ jobs:
     - name: run testchecker
       run: ./testchecker
 
-    - name: run sender receiver application
+    - name: run receiver application
       run: ./sender | ./receiver -r
 
     - name: run receiver test
       run: ./receiver -t
+
+    - name: run sender test
+      run: ./sender
       
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
