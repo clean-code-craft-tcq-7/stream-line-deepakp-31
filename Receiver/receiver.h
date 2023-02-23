@@ -3,4 +3,3 @@
 #define ARRAY_INDEX0            0
 #define ARRAY_INDEX1            1
 void readfromConsole(char* rxBuffer);
-void Receiver(char *rxBuffer,char sensor1Buff[][MAX_RECEIVE_BYTE]);
