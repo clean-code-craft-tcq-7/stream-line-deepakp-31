@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <math.h>
 #include "getMovingAvg.h"
-#include "testCases.h"
+#include "getSensorVal.h"
 
 void testCaseMovingAvg()
 {

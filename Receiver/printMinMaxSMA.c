@@ -6,8 +6,9 @@
 #include "getSensorVal.h"
 #include "getMinMaxVal.h"
 #include "getMovingAvg.h"
+#include "printMinMaxSMA.h"
 
-void printMinMax_SMA(void (*receiver)(char*))
+void printMinMax_SMA(void (*receiver)(char*),void (*print)(int,st_Sensor,float*))
 {
     static int rxCnt =0;
     char rxBuffer[MAX_SENSOR+(2*HEADER_STRCNT)][MAX_RECEIVE_BYTE];
@@ -25,8 +26,14 @@ void printMinMax_SMA(void (*receiver)(char*))
     getMinMaxVal(&sensorReadingArr[ARRAY_INDEX1]);
     simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX0].value[0],sensorReadingArr[ARRAY_INDEX0].readingCnt-5,sensorReadingArr[ARRAY_INDEX0].readingCnt,&smaSensorOut[ARRAY_INDEX0][0]);
     simpleMovingAvg(&sensorReadingArr[ARRAY_INDEX1].value[0],sensorReadingArr[ARRAY_INDEX1].readingCnt-5,sensorReadingArr[ARRAY_INDEX1].readingCnt,&smaSensorOut[ARRAY_INDEX1][0]);
-    printf("Sensor1 Min : %f, Max : %f\n",sensorReadingArr[ARRAY_INDEX0].minVal,sensorReadingArr[ARRAY_INDEX0].maxVal);
-    printf("Sensor2 Min : %f, Max : %f\n",sensorReadingArr[ARRAY_INDEX1].minVal,sensorReadingArr[ARRAY_INDEX1].maxVal);
-    printf("Sensor1 Last 5 SMA value: %f, %f, %f, %f, %f\n",smaSensorOut[ARRAY_INDEX0][0],smaSensorOut[ARRAY_INDEX0][1],smaSensorOut[ARRAY_INDEX0][2],smaSensorOut[ARRAY_INDEX0][3],smaSensorOut[ARRAY_INDEX0][4]);
-    printf("Sensor2 Last 5 SMA value: %f, %f, %f, %f, %f\n",smaSensorOut[ARRAY_INDEX1][0],smaSensorOut[ARRAY_INDEX1][1],smaSensorOut[ARRAY_INDEX1][2],smaSensorOut[ARRAY_INDEX1][3],smaSensorOut[ARRAY_INDEX1][4]);
+    for(int j=0;j<MAX_SENSOR;j++)
+    {
+        (*print)(j,sensorReadingArr[j],smaSensorOut[j]);
+    }
+}
+
+void printConsole(int sensornum,st_Sensor Data,float* smaData)
+{
+    printf("Sensor%d Min : %f, Max : %f\n",sensornum,Data.minVal,Data.maxVal);
+    printf("Sensor%d Last 5 SMA value: %f, %f, %f, %f, %f\n",sensornum,smaData[0],smaData[1],smaData[2],smaData[3],smaData[4]);
 }

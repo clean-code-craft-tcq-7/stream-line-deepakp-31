@@ -6,6 +6,7 @@
 #include "getSensorVal.h"
 #include "getMinMaxVal.h"
 #include "getMovingAvg.h"
+#include "printMinMaxSMA.h"
 #include "testCases.h"
 
 void runTestcases()
@@ -32,4 +33,23 @@ void testreadFromText(char* rxBuffer)
     {
         loopCnt = 0;
     }
+}
+
+
+void testprintConsole(int sensornum,st_Sensor Data,float* smaData)
+{
+    char arrData[4][500] =
+    {
+        {"Sensor1 Min : 20.978035, Max : 79.935471\n"},
+        {"Sensor2 Min : 0.901037, Max : 43.678535\n"},
+        {"Sensor1 Last 5 SMA value: 52.369339, 52.823067, 59.048641, 49.187351, 57.179497\n"},
+        {"Sensor2 Last 5 SMA value: 31.213350, 29.501518, 30.918686, 29.348564, 33.591274\n"},
+    };
+    char buff[1000];
+    memset(buff,0,1000);
+    sprintf(buff,"Sensor%d Min : %f, Max : %f\n",sensornum,Data.minVal,Data.maxVal);
+    assert(strcmp(arrData[sensornum],buff));
+    memset(buff,0,1000);
+    sprintf(buff,"Sensor%d Last 5 SMA value: %f, %f, %f, %f, %f\n",sensornum,smaData[0],smaData[1],smaData[2],smaData[3],smaData[4]);
+    assert(strcmp(arrData[sensornum],buff));
 }

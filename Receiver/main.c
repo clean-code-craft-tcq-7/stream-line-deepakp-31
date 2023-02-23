@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "receiver.h"
+#include "getSensorVal.h"
 #include "printMinMaxSMA.h"
 #include "testCases.h"
 
@@ -14,12 +15,12 @@ int main(int argc, char *argv[])
     }
     if(strcmp(argv[1],"-t") == 0)
     {
-        printMinMax_SMA(&testreadFromText);
+        printMinMax_SMA(&testreadFromText,&testprintConsole);
         runTestcases();
     }
     else if(strcmp(argv[1],"-r") == 0)
     {
-        printMinMax_SMA(&readfromConsole);
+        printMinMax_SMA(&readfromConsole,&printConsole);
     }
     return 0;
 }
