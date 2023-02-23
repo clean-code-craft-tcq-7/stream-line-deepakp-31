@@ -15,11 +15,11 @@ void printMinMax_SMA(void (*receiver)(char*))
     st_Sensor sensorReadingArr[MAX_SENSOR];
     float smaSensorOut[MAX_SENSOR][MAX_GET_SENSOR_VALUE];
 
-    for(int i=0;i<MAX_SENSOR;i++)
+    for(int i=0;i<MAX_SENSOR+2;i++)
     {
         receiver(rxBuffer[i]);
+        printf("%s\n",rxBuffer[i]);
     }
-    printf("%s\n",rxBuffer[0]);
     Receiver(rxBuffer[0],sensor1Read);
     getSensorRxValues(sensor1Read[0],&sensorReadingArr[ARRAY_INDEX0]);
     getSensorRxValues(sensor1Read[1],&sensorReadingArr[ARRAY_INDEX1]);
