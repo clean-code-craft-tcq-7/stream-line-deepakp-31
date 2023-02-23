@@ -26,6 +26,9 @@ jobs:
       
     - name: run sender
       run: ./sender
+      
+    - name: run receiver application
+      run: ./receiver -r
 
     - name: run testchecker
       run: ./testchecker
@@ -35,9 +38,6 @@ jobs:
       
     - name: run receiver test
       run: ./receiver -t
-      
-    - name: run receiver application
-      run: ./receiver -r
       
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
